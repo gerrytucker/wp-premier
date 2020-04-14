@@ -16,7 +16,7 @@
  * Plugin URI:        https://scratbygardencentre.com/wp-content/plugins/wp-premier
  * GitHub Plugin URI: https://github.com/gerrytucker/wp-premier
  * Description:       WordPress Premier plugin
- * Version:           1.0.14
+ * Version:           1.0.15
  * Author:            Gerry Tucker
  * Author URI:        https://gerrytucker@gerrytucker.co.uk
  * License:           GPL-2.0+
@@ -59,6 +59,37 @@ class WP_Premier
      */
     public function activate() 
     {
+    }
+
+    /**
+     * Create taxonomies
+     * 
+     * @return null
+     */
+    public function createTaxonomies() 
+    {
+        $labels = [
+            'name'              => _x('Businesses', 'taxonomy general name'),
+            'singular_name'     => _x('Business', 'taxonomy singular name'),
+            'search_items'      => __('Search businesses'),
+            'all_items'         => __('All Businesses'),
+            'parent_item'       => __('Parent Business'),
+            'parent_item_colon' => __('Parent Business:'),
+            'edit_item'         => __('Edit Business'),
+            'update_item'       => __('Update Business'),
+            'add_new_item'      => __('Add New Business'),
+            'new_item_name'     => __('New Business Name'),
+            'menu_name'         => __('Business'),
+        ];
+        $args = [
+            'hierarchical'      => true,
+            'labels'            => $labels,
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'query_var'         => true,
+            'rewrite'           => ['slug' => 'business'],
+        ]
+        register_taxonomy('business', ['category', 'post'], $args);
     }
 
     /**
@@ -154,6 +185,7 @@ class WP_Premier
     static function init() 
     {
         register_activation_hook(__FILE__, array( 'WP_Premier', 'activate' ));
+        add_action('create_taxonomies', array('WP_Premier', 'createTaxonomies'));
         add_action('rest_api_init', array( 'WP_Premier', 'registerApiHooks' ));
     }
 
