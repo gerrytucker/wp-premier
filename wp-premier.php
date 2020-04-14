@@ -16,7 +16,7 @@
  * Plugin URI:        https://scratbygardencentre.com/wp-content/plugins/wp-premier
  * GitHub Plugin URI: https://github.com/gerrytucker/wp-premier
  * Description:       WordPress Premier plugin
- * Version:           1.0.17
+ * Version:           1.0.18
  * Author:            Gerry Tucker
  * Author URI:        https://gerrytucker@gerrytucker.co.uk
  * License:           GPL-2.0+
