@@ -57,9 +57,7 @@ class WP_Premier
      * 
      * @return null
      */
-    public function activate() 
-    {
-    }
+    public function activate() {}
 
     /**
      * Create taxonomies
@@ -89,7 +87,7 @@ class WP_Premier
             'query_var'         => true,
             'rewrite'           => ['slug' => 'business'],
         ];
-        register_taxonomy('business', ['post'], $args);
+        register_taxonomy('business', ['category', 'post'], $args);
     }
 
     /**
