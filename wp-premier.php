@@ -16,7 +16,7 @@
  * Plugin URI:        https://scratbygardencentre.com/wp-content/plugins/wp-premier
  * GitHub Plugin URI: https://github.com/gerrytucker/wp-premier
  * Description:       WordPress Premier plugin
- * Version:           1.0.21
+ * Version:           1.0.22
  * Author:            Gerry Tucker
  * Author URI:        https://gerrytucker@gerrytucker.co.uk
  * License:           GPL-2.0+
@@ -66,7 +66,7 @@ class WP_Premier
      */
     public function createTaxonomies() 
     {
-        $labels = [
+        $labels = array(
             'name'              => _x('Businesses', 'taxonomy general name'),
             'singular_name'     => _x('Business', 'taxonomy singular name'),
             'search_items'      => __('Search businesses'),
@@ -77,16 +77,16 @@ class WP_Premier
             'update_item'       => __('Update Business'),
             'add_new_item'      => __('Add New Business'),
             'new_item_name'     => __('New Business Name'),
-            'menu_name'         => __('Business'),
-        ];
-        $args = [
+            'menu_name'         => __('Business')
+        );
+        $args = array(
             'hierarchical'      => true,
             'labels'            => $labels,
             'show_ui'           => true,
             'show_admin_column' => true,
             'query_var'         => true,
-            'rewrite'           => ['slug' => 'business'],
-        ];
+            'rewrite'           => array('slug' => 'business')
+        );
         register_taxonomy('business', 'post', $args);
     }
 
