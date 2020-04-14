@@ -16,7 +16,7 @@
  * Plugin URI:        https://scratbygardencentre.com/wp-content/plugins/wp-premier
  * GitHub Plugin URI: https://github.com/gerrytucker/wp-premier
  * Description:       WordPress Premier plugin
- * Version:           1.0.24
+ * Version:           1.0.25
  * Author:            Gerry Tucker
  * Author URI:        https://gerrytucker@gerrytucker.co.uk
  * License:           GPL-2.0+
@@ -84,6 +84,7 @@ class WP_Premier
             'labels'            => $labels,
             'show_ui'           => true,
             'show_admin_column' => true,
+            'show_in_rest'      => true,
             'query_var'         => true,
             'rewrite'           => array('slug' => 'business')
         );
