@@ -185,7 +185,7 @@ class WP_Premier
     static function init() 
     {
         register_activation_hook(__FILE__, array( 'WP_Premier', 'activate' ));
-        add_action('create_taxonomies', array('WP_Premier', 'createTaxonomies'));
+        self::create_taxonomies();
         add_action('rest_api_init', array( 'WP_Premier', 'registerApiHooks' ));
     }
 
