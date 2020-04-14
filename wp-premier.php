@@ -88,7 +88,7 @@ class WP_Premier
             'show_admin_column' => true,
             'query_var'         => true,
             'rewrite'           => ['slug' => 'business'],
-        ]
+        ];
         register_taxonomy('business', ['category', 'post'], $args);
     }
 
