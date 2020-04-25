@@ -16,7 +16,7 @@
  * Plugin URI:        https://scratbygardencentre.com/wp-content/plugins/wp-premier
  * GitHub Plugin URI: https://github.com/gerrytucker/wp-premier
  * Description:       WordPress Premier plugin
- * Version:           1.0.25
+ * Version:           1.1.0
  * Author:            Gerry Tucker
  * Author URI:        https://gerrytucker@gerrytucker.co.uk
  * License:           GPL-2.0+
@@ -26,6 +26,7 @@
  */
 
 require_once 'classes/class_posts.php';
+require_once 'classes/class_categories.php';
 
 /**
  * NPPP2U Plugin Functions
@@ -131,6 +132,16 @@ class WP_Premier
             )
         );
     
+        // Get categories
+        register_rest_route(
+            self::API_VERSION,
+            'categories',
+            array(
+                'methods'   => 'GET',
+                'callback'  => array( 'WP_Premier', 'getCategories' )
+            )
+        );
+    
     }
 
     /**
@@ -169,6 +180,27 @@ class WP_Premier
 
         if ($post = $wp->getPost($postid) ) {
             return new WP_REST_Response($post, 200);
+        } else {
+            // return an 404 empty result set
+            return new WP_REST_Response(array(), 404);
+        }
+            
+    }
+
+    /**
+     * Get categories
+     *
+     * @param WP_REST_Request $request Rest request
+     * 
+     * @return WP_REST_Response
+     */
+    static function getCategories( WP_REST_Request $request ) 
+    {
+
+        $wp = new Premier_Categories();
+
+        if ($posts = $wp->getCategories() ) {
+            return new WP_REST_Response($posts, 200);
         } else {
             // return an 404 empty result set
             return new WP_REST_Response(array(), 404);
