@@ -46,7 +46,11 @@ class Premier_Categories
     public function getCategories() 
     {
 
-        $categories = get_categories();
+        $categories = get_categories(
+            array(
+                'hide_empty'    => false,
+            )
+        );
 
         $response = array();
 
