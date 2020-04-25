@@ -26,7 +26,6 @@
  */
 
 require_once 'classes/class_posts.php';
-require_once 'classes/class_categories.php';
 
 /**
  * NPPP2U Plugin Functions
@@ -180,27 +179,6 @@ class WP_Premier
 
         if ($post = $wp->getPost($postid) ) {
             return new WP_REST_Response($post, 200);
-        } else {
-            // return an 404 empty result set
-            return new WP_REST_Response(array(), 404);
-        }
-            
-    }
-
-    /**
-     * Get categories
-     *
-     * @param WP_REST_Request $request Rest request
-     * 
-     * @return WP_REST_Response
-     */
-    static function getCategories( WP_REST_Request $request ) 
-    {
-
-        $wp = new Premier_Categories();
-
-        if ($posts = $wp->getCategories() ) {
-            return new WP_REST_Response($posts, 200);
         } else {
             // return an 404 empty result set
             return new WP_REST_Response(array(), 404);
